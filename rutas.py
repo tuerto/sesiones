@@ -13,6 +13,7 @@ app.config['SECRET_KEY'] = os.getenv('SECRET_KEY') or \
 
 @app.route('/')
 def index():
+    session.clear()
     # the "answer" value cannot be stored in the user session as done below
     # since the session is sent to the client in a cookie that is not encrypted!
     session['answer'] = random.randint(1, 10)
